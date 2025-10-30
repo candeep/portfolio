@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="stylesheet.css"> -->
+</head>
+<style>
+    :root{
+    --body-color: rgb(0, 0, 0);
+    --color-white: rgb(0, 0, 0);
+
+    --text-color-second: rgb(255, 255, 255);
+    --text-color-third: rgb(30, 159, 171);
+
+    --first-color: rgb(87, 224, 165);
+    --first-color-hover: rgb(40, 91, 212);
+
+    --second-color:rgb(87, 224, 165);;
+    --third-color: rgb(192, 166, 49);
+    --first-shadow-color: rgba(0, 0, 0, 0.1);
+
+}
+
+    body{
+        background-color: #000;
+        font-family: 'Poppins', sans-serif;
+        color: #ffffff;
+    }
+    a{
+        text-decoration: none;
+        color: #ffffff;
+    }
+    
+    .navbar-names ul {
+    list-style-type: square;
+    display:flex;
+    line-height: 40px;
+    justify-content: space-around;
+    }
+    .navbar-names li{ 
+    display:block; 
+    margin:10px; 
+    color: #ffffff;
+    }
+    y{
+        text-decoration: none;
+        display: inline-block;
+        text-transform: capitalize;
+        position: relative;
+        color: #ffffff;
+    }
+    my{
+       color: #ffffff; 
+    }
+    y:hover{
+        color: #ffffff;
+    }
+    y::before{
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background-color: #edcf22;
+        transition: all 0.5s ;
+    }
+    y:hover::before{
+        width: 100%;
+    }
+        .navbar-names{
+            line-height: 20px;
+            justify-content: space-around;
+            font-size: 23px;
+            
+        }
+        .banner{
+            justify-content: space-between;
+            display: inline-block;
+        }
+        .banner img{
+            float: left;
+            /* testing */
+            /* border-radius: 34% 64% 77% 26% / 73% 54% 45% 19%; */
+            /* border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; */
+        }
+        .banner p{
+            float: right;
+        }
+        
+        .mybtn{
+            background-color: #edcf22;
+            width: 130px;
+            height: 45px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;           
+        }
+        #about{
+            padding: 80px 0;
+            color: #ffffff;
+        }
+        .myrow{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .about-col-1{
+            flex-basis: 35%;
+        }
+        .about-col-1 img{
+            width: 100%;
+            border-radius: 15px;
+            height: 500px;
+        }
+        .about-col-2{
+            flex-basis: 60%;
+            color: rgb(255, 255, 255);
+        }
+        .sub-title{
+            font-size: 45px;
+            font-weight: 600;
+        }
+        .tab-titles{
+            display: flex;
+            margin: 20px 0 40px;
+        }
+        .tab-links{
+            margin-right: 50px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+        }
+        .tab-links::after{
+            content: '';
+            width: 0;
+            height: 3px;
+            background: #edcf22;
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            transition: 0.5s;
+        }
+        .tab-links.active-link::after{
+            width: 50%;
+        }
+        .tab-contents ul li{
+            list-style: none;
+            margin: 10px 0; 
+        }
+        .tab-contents ul li b{
+            font-size: 17px;
+            color: red;
+        }
+        .tab-contents{
+            display: none;
+        }
+        .tab-contents.active-tab{
+            display: block;
+        }
+        .projects{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            /* min-height: 100vh; */
+        }
+        .card{
+            position: relative;
+            width: 300px;
+            height: 350px;
+            margin: 50px;
+        }
+        .card .face{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: .5s;
+        }
+        .card .front{
+            transform: perspective(600px) rotateY(0deg);
+            box-shadow: 0 5px 10px #000;
+        }
+        .card .front img{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .card .front h3{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 45px;
+            line-height: 45px;
+            color: rgb(184, 95, 239);
+            background: #000;
+            text-align: center;
+        }
+        .card .back{
+            transform: perspective(600px) rotateY(180deg);
+            background: rgb(30, 2, 56);
+            padding: 15px;
+            color: #ffffff;
+            display:flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            box-shadow: 0 5px 10px #000;
+        }
+        .card .back .link{
+            border-top: solid 1px rgb(255, 255, 255);
+            height: 50px;
+            line-height: 50px;
+        }
+        .card .back .link a{
+            color: aqua;
+        }
+        .card .back h3{
+            font-size: 30px;
+            margin-top: 20px;
+            letter-spacing: 2px;
+        }
+        .card .back p{
+            letter-spacing: 1px;
+        }
+        .card:hover .front{
+            transform: perspective(600px) rotateY(180deg);
+        }
+        .card:hover .back{
+            transform: perspective(600px) rotateY(360deg);
+        }
+        
+
+
+        /* ----- CONTACT FORM ----- */
+        .top-header{
+            text-align: center;
+            /* margin-bottom: 1; */
+        }
+        .top-header h1{
+            /* font-weight: 600; */
+            color: var(--text-color-second);
+            margin-bottom: 10px;
+        }
+        .top-header span{
+            color: #999;
+        }
+        .contact-info{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 30px;
+            width: 100%;
+            height: 315px;
+            background: #edcf22;
+            border-radius: 10px;
+            box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
+            overflow: hidden;
+        }
+        .contact-info:hover{
+            background: aqua;
+        }
+        .contact-info>h2{
+            color: var(--color-white);
+            margin-bottom: 20px;
+        }
+        .contact-info>p{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--color-white);
+            margin-block: 5px;
+        }
+        .contact-info p>i{
+            font-size: 18px;
+        }
+        .contact-info::after{
+            background: var(--color-white);
+        }
+        .contact-info:hover.contact-info h2,
+        .contact-info:hover.contact-info p,
+        .contact-info:hover.contact-info i{
+            /* color: #777; */
+            z-index: 2;
+        }
+
+        /* ----- CONTACT FORM ----- */
+        .form-control{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+        .form-inputs{
+            display: flex;
+            gap: 15px;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        .input-field{
+            width: 50%;
+            height: 55px;
+            background: transparent;
+            border: 2px solid #AAA;
+            border-radius: 10px;
+            padding-inline: 20px;
+            outline: none;
+            color: #F8F8F8;
+        }
+        textarea{
+            width: 90%;
+            height: 250px;
+            background: transparent;
+            border: 2px solid #AAA;
+            border-radius: 10px;
+            padding: 15px 20px;
+            outline: none;
+            color: #F8F8F8;
+            resize: none;
+        }
+        .btn{
+            margin-top: 1rem;
+            width: 100px;
+            height: 40px;
+            border-radius:10px;
+            border: none;
+            background-color:  #edcf22
+        }
+        .form-button>.btn{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #edcf22;
+            
+        }
+        .form-button>.btn:hover{
+            background: aqua;
+        }
+        .form-button i{
+            font-size: 18px;
+            rotate: -45deg;
+        }
+        .row{
+            display: flex;
+            margin: 5%;
+            gap: 50px;
+        }
+        .col{
+            display: flex;
+            width: 100%;
+        }
+        
+        .footer-icons{
+            text-align: center;
+            color: #000;
+        }
+        .my-icons{
+            font-size: 25px;
+        }
+        .fa-brands.fa-linkedin-in:hover,.fa-brands.fa-github:hover,
+        .fa-brands.fa-instagram:hover,.fa-brands.fa-youtube:hover{
+            color: red;
+        }
+        .footer-icons a{
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        /* #about{
+            margin-bottom: 10px;
+        }
+         */
+        
+</style>
+<body>
+    <nav>
+        <!-----------------------NAVBAR------------------->
+        <div class="navbar-names">
+            <ul>
+                <li><y><a href="#home" style="color: #000000; "><my>Home</my></a></y></li>
+                <li><y><a href="#about" style="color: #000000; "><my>About</my></a></y></li>
+                <li><y><a href="#project" style="color: #000000;"><my>Projects</my></a></y></li>
+                <li><y><a href="#contact" style="color: #000000;"><my>Contact Me</my></a></y></li>
+                <li><v><a href="Sandeep_Singh_Resume.pdf" ><button  class="mybtn">My Resume</button></a></v></li>
+            </ul>
+        </div>  
+    </nav>   
+        <hr style="background-color: green;">       
+        <!-----------------HOME--------------->
+        <section id="home" >
+            <div class="banner">
+                <br><br>
+                <img  src="hero.png" alt="poster banner" >
+                <p style="font-size: 35px;"><b style="color: red; font-size: 55px;"><br><br>&nbsp;&nbsp;&nbsp;I'm </b><span style="font-weight: 400;"> Sandeep Singh Rasaputhra</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="color: rgb(255, 255, 255); font-size: 20px;">I'm a CS-Graduate looking for opportunities</span></p><br>
+                    <a style="padding-left: 205px;" href="Sandeep_Singh_Resume.pdf" ><button  class="mybtn">My Resume</button></a>
+            </div>
+        </section>
+        <!---------------------ABOUT----------------->
+        <section id="about">
+            <div class="myrow">
+                <div class="about-col-1">
+                    <img src="wall burst.png">
+                </div>
+                <div class="about-col-2">
+                    <h1 style="color: aqua;" class="sub-title">ABOUT ME</h1>
+                    <p>I’m Sandeep Singh Rasaputhra, a Computer Science and Engineering student at RVR & JC College, Andhra Pradesh, with a strong academic record (CGPA: 8.44). My experience includes internships in Natural Language Processing and front-end web development, where I fine-tuned models like GPT, developed intelligent chatbots, and created user-friendly websites.
+
+                        Proficient in Python, C, Java, and web technologies like HTML, CSS, and JavaScript, I’ve built projects ranging from machine learning models to personal portfolios. I hold certifications in Machine Learning and Python, and I actively participate in hackathons and volunteer work.</p>
+                        <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                            <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                            <p class="tab-links" onclick="opentab('education')">Education</p>
+                        </div>
+                        <div class="tab-contents active-tab" id="skills">
+                            <ul>
+                                <li><b>Core</b><br>C, Python, Java, SQL</li>
+                                <li><b>DSA</b><br>Python/Java</li>
+                                <li><b>Web Development</b><br>HTML, CSS, JavaScript</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents"  id="experience">
+                            <ul>
+                                <li><b>Indian Servers</b><br>Summer Intern in Machine Learning </li>
+                                <li><b>TechnoHacks</b><br>Summer Intern in Web Development</li>
+                                
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="education">
+                            <ul>
+                                <li><b>Bachelors of Technology</b><br>RVR & JC college of Engineering&#160;&#160;&#160;&#160;&#160;&#160;2021-Present</li>
+                                <li><b>Intermediate Education</b><br>Vignan Junior College&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;2019-2021</li>
+                                <li><b>Secondary Education</b><br>Geethanjali High School&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;2018-2019</li>
+                            </ul>
+                        </div>
+
+                </div>
+            </div>
+        </section>        
+        <!-------------------------PROJECTS--------------------->
+        <section  id="project">
+        <p style="font-size: 55px; color:aqua; text-align: center; font-weight: 700; margin: 5px 5px 5px;">My Projects</p><br>
+        
+            <div class="projects">
+            <!-- --------car price card------- -->
+            <div class="card">
+                <div class="face front">
+                    <img src="car.png" alt="">
+                    <h3>Car Price</h3>
+                </div>
+                <div class="face back">
+                    <h3>Car Price</h3>
+                    <p> ● A used car dataset was optimized for machine learning applications, enabling linear regression to predict price of thecar new details. <br>
+                        ● Demonstrated strong data management skills by organizing key columns such as name, year, selling price, km driven,
+                        etc. Significantly enhancing the dataset’s applicability for predictive modeling and accuracy.
+                        </p>
+                        <div class="link">
+                        <a href="#">ReadMore</a>
+                    </div>
+                </div>
+            </div>
+            <!-- -----------calorie burnt card----------- -->
+            <div class="card">
+                <div class="face front">
+                    <img src="calorie.webp" alt="">
+                    <h3>Calorie Burnt</h3>
+                </div>
+                <div class="face back">
+                    <h3>Calorie Burnt</h3>
+                    <p> ● Developed a machine learning model that predicts  Developed a machine learning model that predicts Developed a machine learning model that predicts the number of calories burned during physical activities. <br>
+                        ● The model utilizes user-specific information and activity-related features to provide accurate calories burned
+                        predictions.
+                        </p>
+                    <div class="link">
+                        <a href="#">ReadMore</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- -----------------------CONTACT FORM----------------- -->
+        <section class="section" id="contact">
+            <div class="top-header">
+              <h1 style="font-size: 55px; color: aqua; font-weight: 600; margin-bottom: 10px;">Contact Me</h1>
+            </div>
+            <div class="row">
+               <div class="col">
+                  <div class="contact-info">
+                      <h2>Find Me <i class="uil uil-corner-right-down"></i></h2>
+                      <p><i class="fa-regular fa-envelope"></i> Email: rasaputhrasandeepsingh@gmail.com</p>
+                      <p><i class="fa-solid fa-phone"></i>Tel: +91 9182114184</p>
+                      <br>
+                      <div class="footer-icons">
+                        <a style="color: #000;" class="my-icons" href="https://www.linkedin.com/in/sandeep1122/"><i class="fa-brands fa-linkedin-in"></i></i></a>
+                        <a style="color: #000;" class="my-icons" href="https://github.com/candeep"><i class="fa-brands fa-github"></i></a>
+                        <a style="color: #000;" class="my-icons" href="https://www.instagram.com/sandeep_rss/"><i class="fa-brands fa-instagram"></i></a>
+                        <a style="color: #000;" class="my-icons" href="https://www.youtube.com/@TekSandeep"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                  </div>
+               </div>
+               <div class="col">
+                
+                  <div class="form-control">
+                    <form name="submit-to-google-sheet">
+                      <div class="form-inputs">
+                          <input type="text" name="name" class="input-field" placeholder="Name">
+                          <input type="text" name="email" class="input-field" placeholder="Email">
+                      </div>
+                      <div class="text-area">
+                          <textarea name="message" placeholder="Message" ></textarea>
+                      </div>
+                      <div class="form-button">
+                          <button type="submit" class="btn">submit&nbsp; <i class="uil uil-message"></i></button>
+                      </div>
+                      
+                    </form>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- --------------------FOOTER---------------- -->
+          <!-- <footer >
+            <hr>
+            <p style="text-align: center; font-size: 25px;"><br></p>
+          </footer> -->
+
+
+
+
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyO4V8Oe_OVDc-oMzEFvzhaTqwsncGELzUCQVa615FnLlL5rT_KQzyimbjzwB7bPJNk/exec'
+        const form = document.forms['submit-to-google-sheet']
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert("Thanks for contacting will contact you ASAP!"))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+
+
+    
+    <!-- <script src="main.js"></script> -->
+</body>
+</html>
